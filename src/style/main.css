@@ -3,8 +3,12 @@ body {
   padding: 0;
 }
 
+h1 {
+  margin: 0;
+  padding: 0;
+}
 
-.Cmn-Loader {
+.Loader {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,23 +24,51 @@ body {
   }
 }
 
-.Edt-Container {
+.App {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 32px;
+  font-size: .5em;
+  background-color: #000;
+  color: #fff;
+}
+
+.Footer {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 24px;
+  font-size: .3em;
+}
+
+.Container {
+  display: flex;
+  flex: 1 1 auto;
 
   &_item {
     flex: 1 1 auto;
     width: 50%;
   }
 
-
   &_item > iframe {
-    padding-top: 10px;
+    padding-top: 8px;
+  }
+
+  &_item > textarea {
+    padding: 8px;
   }
 
   &_item > iframe,
   &_item > textarea {
     width: 100%;
-    height: 90vh;
+    height: calc(100vh - 32px - 24px);
     border: 1px solid #eee;
     box-sizing: border-box;
   }
