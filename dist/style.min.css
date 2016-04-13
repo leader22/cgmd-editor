@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.Cmn-Loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+
+.Cmn-Loader_text {
+  font-size: 2em;
+}
+
+
+.Edt-Container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+
+.Edt-Container_item {
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 50%;
+}
+
+
+.Edt-Container_item > iframe {
+  padding-top: 10px;
+}
+
+
+.Edt-Container_item > iframe,
+  .Edt-Container_item > textarea {
+  width: 100%;
+  height: 90vh;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
