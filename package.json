@@ -31,7 +31,20 @@
   },
   "dependencies": {
     "codegrid-markdown": "^2.1.0",
+    "lodash.debounce": "^4.0.5",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leader22/cgmd-editor.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/leader22/cgmd-editor/issues"
+  },
+  "homepage": "https://github.com/leader22/cgmd-editor#readme"
 }

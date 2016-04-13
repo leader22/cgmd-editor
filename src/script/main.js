@@ -1,50 +1,55 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import { render } from 'react-dom';
-import CGMD from 'codegrid-markdown';
+import debounce from 'lodash.debounce';
 
-const cgmd = new CGMD();
+import Editor from './component/Editor.jsx';
+import Viewer from './component/Viewer.jsx';
+
+
+const defaultMD = `
+## 見出し1
+てきすと
+
+[note]
+# *注
+これが注釈です。
+[/note]
+`.slice(1, -1); // 改行いらない
 
 class App extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      html: ''
+      md: defaultMD
     };
 
-    this._handleInput = this._handleInput.bind(this);
+    this._onUpdate = this._onUpdate.bind(this);
+    this._onUpdate = debounce(this._onUpdate, 300);
   }
-  render() {
-    const { html } = this.state;
-    console.log(html);
 
+  render() {
     return (
       <div>
-        <div>
-          <textarea onInput={this._handleInput}></textarea>
-          <iframe ref="iframe"></iframe>
+        <div className="Edt-Container">
+          <div className="Edt-Container_item">
+            <Editor
+              md={this.state.md}
+              onUpdate={this._onUpdate}
+            />
+          </div>
+          <div className="Edt-Container_item">
+            <Viewer
+              md={this.state.md}
+            />
+          </div>
         </div>
       </div>
     );
   }
 
-  _handleInput(ev) {
-    const html = `
-      <html>
-      <head>
-        <link rel="stylesheet" href="https://app.codegrid.net/cg-ui/css/codegrid-ui.min.css" />
-      </head>
-      <body>
-        ${cgmd.render(ev.currentTarget.value)}
-      </body>
-      </html>
-    `;
-    this.setState({ html: html });
-
-    const iframe = this.refs.iframe;
-    iframe.contentWindow.document.open();
-    iframe.contentWindow.document.write(html);
-    iframe.contentWindow.document.close();
+  _onUpdate(md) {
+    this.setState({ md: md });
   }
 }
 
