@@ -12,9 +12,11 @@ class Viewer extends React.Component {
   componentDidMount() {
     this._updateIFrame();
   }
+
   componentDidUpdate() {
     this._updateIFrame();
   }
+
   _updateIFrame() {
     const md = this.props.md;
     const iframe = this.refs.iframe;
@@ -30,7 +32,7 @@ class Viewer extends React.Component {
     const html = `
       <html>
       <head>
-        <link rel="stylesheet" href="https://app.codegrid.net/cg-ui/css/codegrid-ui.min.css" />
+        <link rel="stylesheet" href="http://ui.codegrid.net/assets2/css/codegrid-ui.min.css">
       </head>
       <body>
         <div class="CG2-narrowLayout">
@@ -41,7 +43,7 @@ class Viewer extends React.Component {
             </article>
           </div>
         </div>
-        <script src="https://app.codegrid.net/cg-ui/js/codegrid-ui.min.js"></script>
+        <script src="http://ui.codegrid.net/assets2/js/codegrid-ui.min.js"></script>
       </body>
       </html>
     `;
