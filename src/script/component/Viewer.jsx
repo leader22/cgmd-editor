@@ -7,8 +7,10 @@ class Viewer extends React.Component {
   constructor({ debounceTime }) {
     super();
 
-    this._updateIFrame = debounce(this._updateIFrame, debounceTime);
+    this._updateIFrame = this._updateIFrame.bind(this);
+    this._debouncedUpdateIFrame = debounce(this._updateIFrame, debounceTime);
   }
+
   render() {
     return (
       <iframe ref="iframe"></iframe>
@@ -20,7 +22,7 @@ class Viewer extends React.Component {
   }
 
   componentDidUpdate() {
-    this._updateIFrame();
+    this._debouncedUpdateIFrame();
   }
 
   _updateIFrame() {
@@ -44,7 +46,7 @@ class Viewer extends React.Component {
         <div class="CG2-narrowLayout">
           <div class="CG2-narrowLayout__main">
             <article class="CG2-article">
-              <h2>※目次は自動生成されます</h2>
+              <h2>※目次は自動生成されるので不要です！</h2>
               ${article}
             </article>
           </div>
@@ -61,6 +63,7 @@ class Viewer extends React.Component {
 }
 
 Viewer.propTypes = {
+  md: React.PropTypes.string.isRequired,
   debounceTime: React.PropTypes.number
 };
 

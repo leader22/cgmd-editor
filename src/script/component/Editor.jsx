@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ActionCreator from '../action/creator';
+import ActionCreator from '../action-creator';
 
 class Editor extends React.Component {
   render() {
@@ -20,5 +20,9 @@ class Editor extends React.Component {
     ActionCreator.updateMd(ev.currentTarget.value);
   }
 }
+
+Editor.propTypes = {
+  md: React.PropTypes.string.isRequired
+};
 
 export default Editor;

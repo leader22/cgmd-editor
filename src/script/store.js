@@ -4,12 +4,46 @@ import { setStorage } from './util';
 import dispatcher from './dispatcher';
 
 const defaultMD = `
-## 見出し1
-てきすと
+## CGMDとは
+CodeGridの原稿を、ほぼMarkdownで書けてしまうものです！
+記法は[CodeGrid Markdown](https://github.com/pxgrid/codegrid-markdown)からご確認ください。
+
+> これであの\`jade\`(a.k.a. \`pug\`)なんか使わなくてもよくなります！！1
+
+## CGMD Editorとは
+そんな[CodeGrid Markdown](https://github.com/pxgrid/codegrid-markdown)の記法をリアルタイムにプレビューできるエディターです！
+
+\`\`\`javascript#これもReactでできてます
+import React from 'react';
+import ActionCreator from '../action-creator';
+
+class Editor extends React.Component {
+  render() {
+    const { md } = this.props;
+
+    return (
+      <textarea
+        defaultValue={md}
+        onChange={this._onChange}
+      ></textarea>
+    );
+  }
+
+  _onChange(ev) {
+    ActionCreator.updateMd(ev.currentTarget.value);
+  }
+}
+
+export default Editor;
+\`\`\`
+
+このエディター自体のリポジトリは[こちら](https://github.com/leader22/cgmd-editor)です。Folk, p-rなどなどご自由に。
 
 [note]
 # *注
-これが注釈です。
+エディターとしての機能は皆無です。
+
+皆様お気に入りがあると思うので、コミットする前の確認くらいに使ってもらえればいいのかなーと。
 [/note]
 `.slice(1, -1); // 改行いらない
 
