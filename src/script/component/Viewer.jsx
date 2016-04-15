@@ -4,10 +4,10 @@ import CGMD from 'codegrid-markdown';
 const cgmd = new CGMD();
 
 class Viewer extends React.Component {
-  constructor() {
+  constructor({ debounceTime }) {
     super();
 
-    this._updateIFrame = debounce(this._updateIFrame, 300);
+    this._updateIFrame = debounce(this._updateIFrame, debounceTime);
   }
   render() {
     return (
@@ -59,5 +59,13 @@ class Viewer extends React.Component {
     iframe.contentWindow.document.close();
   }
 }
+
+Viewer.propTypes = {
+  debounceTime: React.PropTypes.number
+};
+
+Viewer.defaultProps = {
+  debounceTime: 300
+};
 
 export default Viewer;

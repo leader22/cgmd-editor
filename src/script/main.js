@@ -13,7 +13,6 @@ window.addEventListener('load', () => {
       type: 'LOAD_MD',
       data: { md: draft }
     };
-    console.log(action);
     dispatcher.dispatch(action);
   }
 
