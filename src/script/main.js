@@ -1,20 +1,10 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { render } from 'react-dom';
 
-import { getStorage } from './util';
-import dispatcher from './dispatcher';
+import ActionCreator from './action-creator';
 import App from './component/app.jsx';
 
 window.addEventListener('load', () => {
-  const draft = getStorage('CGMD-draft');
-
-  if (draft) {
-    const action = {
-      type: 'LOAD_MD',
-      data: { md: draft }
-    };
-    dispatcher.dispatch(action);
-  }
-
+  ActionCreator.loadMd();
   render(<App />, document.getElementById('jsApp'));
 }, false);
