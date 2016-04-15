@@ -1,8 +1,14 @@
 import React from 'react';
+import debounce from 'lodash.debounce';
 import CGMD from 'codegrid-markdown';
 const cgmd = new CGMD();
 
 class Viewer extends React.Component {
+  constructor() {
+    super();
+
+    this._updateIFrame = debounce(this._updateIFrame, 300);
+  }
   render() {
     return (
       <iframe ref="iframe"></iframe>

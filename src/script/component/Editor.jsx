@@ -1,17 +1,24 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
-const Editor = (props) => {
-  const {
-    md,
-    onUpdate,
-  } = props;
+import ActionCreator from '../action/creator';
 
-  return (
-    <textarea
-      defaultValue={md}
-      onChange={(ev) => { onUpdate(ev.currentTarget.value); }}
-    ></textarea>
-  );
-};
+class Editor extends React.Component {
+  render() {
+    const {
+      md
+    } = this.props;
+
+    return (
+      <textarea
+        defaultValue={md}
+        onChange={this._onChange}
+      ></textarea>
+    );
+  }
+
+  _onChange(ev) {
+    ActionCreator.updateMd(ev.currentTarget.value);
+  }
+}
 
 export default Editor;

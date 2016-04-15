@@ -1,30 +1,32 @@
 import React from 'react';
-import debounce from 'lodash.debounce';
+
+import Store from './store';
 
 import Header from './component/Header.jsx';
 import Footer from './component/Footer.jsx';
 import Editor from './component/Editor.jsx';
 import Viewer from './component/Viewer.jsx';
 
-const defaultMD = `
-## 見出し1
-てきすと
-
-[note]
-# *注
-これが注釈です。
-[/note]
-`.slice(1, -1); // 改行いらない
 
 class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      md: defaultMD
-    };
+    this.state = Store.get();
 
-    this._onUpdate = debounce(this._onUpdate.bind(this), 300);
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentDidMount() {
+    Store.on('CHANGE', this._onChange);
+  }
+
+  componentWillUnmount() {
+    Store.off('CHANGE', this._onChange);
+  }
+
+  _onChange() {
+    this.setState(Store.get());
   }
 
   render() {
@@ -35,7 +37,6 @@ class App extends React.Component {
           <div className="Container_item">
             <Editor
               md={this.state.md}
-              onUpdate={this._onUpdate}
             />
           </div>
           <div className="Container_item">
@@ -49,10 +50,6 @@ class App extends React.Component {
         />
       </div>
     );
-  }
-
-  _onUpdate(md) {
-    this.setState({ md: md });
   }
 }
 
