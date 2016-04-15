@@ -2,12 +2,11 @@ import dispatcher from '../dispatcher';
 
 const Creator = {
   updateMd: (md) => {
-    dispatcher.dispatch({
+    const action = {
       type: 'UPDATE_MD',
-      data: {
-        md: md
-      }
-    });
+      data: { md }
+    };
+    dispatcher.dispatch(action);
   }
 };
 

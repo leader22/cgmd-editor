@@ -1,5 +1,7 @@
-import dispatcher from './dispatcher';
 import { EventEmitter } from 'events';
+
+import { setStorage } from './util';
+import dispatcher from './dispatcher';
 
 const defaultMD = `
 ## 見出し1
@@ -25,8 +27,13 @@ const store = new Store();
 
 store.dispatchToken = dispatcher.register(({ type, data }) => {
   switch (type) {
+  case 'LOAD_MD':
+    _store.md = data.md;
+    store.emit('CHANGE');
+    break;
   case 'UPDATE_MD':
     _store.md = data.md;
+    setStorage('CGMD-draft', data.md);
     store.emit('CHANGE');
     break;
   default:

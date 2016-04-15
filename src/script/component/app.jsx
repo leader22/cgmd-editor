@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Store from './store';
+import Store from '../store';
 
-import Header from './component/Header.jsx';
-import Footer from './component/Footer.jsx';
-import Editor from './component/Editor.jsx';
-import Viewer from './component/Viewer.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import Editor from './Editor.jsx';
+import Viewer from './Viewer.jsx';
 
 
 class App extends React.Component {
