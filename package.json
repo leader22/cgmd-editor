@@ -30,9 +30,9 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "codegrid-markdown": "^2.1.0",
+    "codegrid-markdown": "^3.0.0",
     "flux": "^2.1.1",
-    "lodash.debounce": "^4.0.5",
+    "lodash.debounce": "^4.0.6",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
   },
